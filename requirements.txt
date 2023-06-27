@@ -1,4 +1,4 @@
-opencv 
+opencv-python
 pytesseract
 re
 pandas
