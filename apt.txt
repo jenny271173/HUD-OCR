@@ -4,3 +4,4 @@ libfontconfig1
 libice6
 libgtk2.0-dev
 pkg-config
+libgl1-mesa-glx
