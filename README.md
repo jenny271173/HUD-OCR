@@ -4,7 +4,7 @@ When analyzing fighter aircraft, collecting data from head-up display videos can
 In other instances, there have been artificial intelligence (AI) related errors in the military theater that have led to tragedies and loss of life. This can, in part, be explained by inaccurate data fed into AI machines that were intended to provide help. In a particular incident on March 22, 2003, the Royal Air Force lost two soldiers because of errors that were attributed to misclassification and the improper definition of rules and autonomous behaviors of a potential enemy weapon (Atherton, 2022). Utilizing other programs, such as OCR, to assist in the reduction of human error in input data can significantly reduce AI related errors, and perform work more efficiently overall. There is very much evidence backing the need for the ability to perform OCR on aircraft data to reduce human error and overall workload.
 
 # Approach to Implementation
-There are two main objectives in this project. The first one is to utilize optical character recognition to recognize text and/or numbers in streaming aircraft HUD videos. The second is to create an organized output for recognized text and/or numbers pulled directly from those streaming videos.
+The main objective of this project is to utilize optical character recognition to recognize text and/or numbers in streaming aircraft HUD videos. Then, this model will be deployed via a web-based platform.
 
 # Instructions for User to Run Project
 1. Review the data source provided on this page. The videos are representative of the input data. The user is able to perform data exploration, visualization, and understand some of the cleaning measures that were taken.
