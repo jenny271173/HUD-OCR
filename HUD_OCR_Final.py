@@ -1,6 +1,5 @@
 # Import streamlit
 import streamlit as st
-import subprocess 
 
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
@@ -18,11 +17,8 @@ st.markdown('In other instances, there have been artificial intelligence (AI) re
 
 st.header('HUD Video Example')
 st.markdown('This is the HUD video taken directly from YouTube and downloaded as an .mp4 file. It can be found here: https://www.youtube.com/watch?v=aSzXqlnT7nQ&ab_channel=NASAArmstrongFlightResearchCenter')
-def install_dependencies():
-    subprocess.run(["sudo", "apt-get", "install", "-y", "libgtk2.0-dev", "pkg-config"])
+
 def main():
-    # Install dependencies
-    install_dependencies()
     F16_HUD = "https://github.com/jenny271173/HUD-OCR/raw/main/F16_HUD.mp4"
     
     # Display the video
