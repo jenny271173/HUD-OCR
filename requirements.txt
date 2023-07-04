@@ -4,3 +4,4 @@ opencv-python==4.5.3.56
 pytesseract==0.3.8
 streamlit==0.85.1
 click==7.1.2
+libgl1-mesa-glx
