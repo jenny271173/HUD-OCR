@@ -157,7 +157,7 @@ st.header('Implementation')
 def run_code():
     st.write("Loading libraries, packages, and data...")
     # Import necessary libraries and packages
-    # import cv2
+    import cv2
     import pytesseract
     # import re
     # Pytesseract
