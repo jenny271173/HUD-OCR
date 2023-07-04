@@ -29,7 +29,7 @@ if __name__ == "__main__":
 st.header('HUD Video Shortened')
 st.markdown('The shortened 30 second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
 def main1():
-    shortened = "/Users/jenniferdoan/Desktop/Shortened.mp4"  
+    shortened = "/Users/jenniferdoan/Desktop/Shortened1.mp4"  
     
     # Display the video
     st.video(shortened)
