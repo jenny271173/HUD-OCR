@@ -18,7 +18,7 @@ st.markdown('In other instances, there have been artificial intelligence (AI) re
 st.header('HUD Video Example')
 st.markdown('This is the HUD video taken directly from YouTube and downloaded as an .mp4 file. It can be found here: https://www.youtube.com/watch?v=aSzXqlnT7nQ&ab_channel=NASAArmstrongFlightResearchCenter')
 def main():
-    F16_HUD = "/Users/jenniferdoan/Desktop/F16_HUD.mp4"  
+    F16_HUD = "https://github.com/jenny271173/HUD-OCR/blob/main/F16_HUD.mp4"
     
     # Display the video
     st.video(F16_HUD)
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 st.header('HUD Video Shortened')
 st.markdown('The shortened 30 second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
 def main1():
-    shortened = "/Users/jenniferdoan/Desktop/Shortened1.mp4"  
+    shortened = "https://github.com/jenny271173/HUD-OCR/raw/main/Shortened1.mp4"  
     
     # Display the video
     st.video(shortened)
