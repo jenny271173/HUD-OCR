@@ -7,6 +7,14 @@ In other instances, there have been artificial intelligence (AI) related errors 
 There are two main objectives in this project. The first one is to utilize optical character recognition to recognize text and/or numbers in streaming aircraft HUD videos. The second is to create an organized output for recognized text and/or numbers pulled directly from those streaming videos.
 
 # Instructions for User to Run Project
+1. Review the data source provided on this page. The videos are representative of the input data. The user is able to perform data exploration, visualization, and understand some of the cleaning measures that were taken.
+2. Review the source code for the OCR model. The preprocessing methods for the video are shown, as well the definitions of each function required to initialize and run the model.
+3. Simply click the Auto Import Data button. This will load the necessary libraries and packages, as well the video itself into the source code. The user will see a message that reads: "Loading libraries, packages, and data..." This will indicate the desired actions are happening successfully.
+4. Click the Run OCR button. This will run the rest of the model and print the output on the screen. The user will expect to see a message that reads: "OCR Action in Progress..." Furthermore, the user will see printed frames, as well as some output in a numbers array. There will be additional output that can be viewed in the terminal of the operating system.
+   
+Note: Although it is not mandatory, it may be helpful to have the terminal open while using this software.
+
+Note: At any time after running the OCR model, the user will be able to click Stop at the top right corner of the page to stop the model from continuing.
 
 # References
 Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/
