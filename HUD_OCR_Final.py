@@ -1,6 +1,9 @@
 # Import streamlit
 import streamlit as st
 
+# Install system dependencies before installing OpenCV
+st.run("sudo apt-get install -y libgtk2.0-dev pkg-config")
+
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
 
