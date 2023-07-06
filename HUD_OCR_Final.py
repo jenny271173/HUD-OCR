@@ -232,6 +232,9 @@ def run_code1():
         cv2.destroyAllWindows()
     
         return numbers_array
+
+    st.write("Numbers Array:", numbers_array)
+    
     if __name__ == "__main__":
         ROI = {
             'ROI 1': (525, 540, 95, 35)
@@ -245,7 +248,6 @@ def run_code1():
 
         # Print the results
         st.write("OCR Action Completed")
-        st.write("Numbers Array:", numbers_array)
         
         st.write("Result:")
         for sublist in result:
