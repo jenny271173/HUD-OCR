@@ -215,8 +215,8 @@ def run_code1():
                     frame_color = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     st.image(frame_color, channels="RGB")
                     
-                if cv2.waitKey(1) == ord('q'):
-                    exit = True 
+                # if cv2.waitKey(1) == ord('q'):
+                    # exit = True 
                 
             else:
                 break
