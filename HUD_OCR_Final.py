@@ -38,5 +38,46 @@ def main1():
 if __name__ == "__main__":
     main1()
 
+st.header('OCR Model Code')
+initial_imports = '''
+# Import streamlit 
+import streamlit as st
+
+# Import necessary libraries and packages
+# pip install opencv-python
+# pip install pytesseract 
+import cv2
+import pytesseract
+import re
+import pandas as pd
+import numpy as np
+'''
+st.code(initial_imports, language='python')
+
+more_path = '''
+# Pytesseract
+pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
+
+# File path for video
+# Video from https://www.youtube.com/watch?v=WkZGL7RQBVw&ab_channel=AviationWeek
+video = "/Users/jenniferdoan/Desktop/Shortened.mp4"
+'''
+st.code(more_path, language='python')
+
+preprocessing = '''
+# Preprocess the frame
+def preprocess_frame(frame):
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(gray, (5, 5), 0)
+    equalized = cv2.equalizeHist(blur)
+    thresh = cv2.threshold(equalized, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=1)
+    closing = cv2.morphologyEx(opening, cv2.MORPH_CLOSE, kernel, iterations=2)
+    return closing
+'''
+st.code(preprocessing, language='python')
+
+
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
 st.markdown(references, unsafe_allow_html=True)
