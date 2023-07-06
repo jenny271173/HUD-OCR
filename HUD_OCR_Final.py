@@ -239,14 +239,8 @@ def run_code1():
             }
         result_2 = run_OCR(video, ROI_2, num_frames=10)
         
-        st.write("Result:")
-        for sublist in result:
-            st.write('.'.join(sublist))
-
-        st.write("Result 2:")
-        for sublist in result_2:
-            for item in sublist:
-                st.write(item)
+        st.write(result)
+        st.write(result_2)
             
     
 if st.button("Run OCR"):
