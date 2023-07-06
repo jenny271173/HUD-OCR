@@ -143,6 +143,30 @@ if __name__ == "__main__":
 print(result)
 print(result_2)
 '''
+st.code(rois, language='python')
+
+st.header('Instructions to Operate HUD OCR Model')
+st.markdown('1. Review the data source provided on this page. The videos are representative of the input data. The user is able to perform data exploration, visualization, and understand some of the cleaning measures that were taken.')
+st.markdown('2. Review the source code for the OCR model. The preprocessing methods for the video are shown, as well the definitions of each function required to initialize and run the model.')
+st.markdown('3. Simply click the **Auto Import Data** button. This will load the necessary libraries and packages, as well the video itself into the source code. The user will see a message that reads: "Loading libraries, packages, and data..." This will indicate the desired actions are happening successfully.')
+st.markdown('4. Click the **Run OCR** button. This will run the rest of the model and print the output on the screen. The user will expect to see a message that reads: "OCR Action in Progress..." Furthermore, the user will see printed frames, as well as some output in a numbers array. There will be additional output that can be viewed in the terminal of the operating system.')
+st.markdown('**Note**: Although it is not mandatory, it may be helpful to have the terminal open while using this software.')
+st.markdown('**Note**: At any time after running the OCR model, the user will be able to click **Stop** at the top right corner of the page to stop the model from continuing.')
+
+st.header('Implementation')
+def run_code():
+    st.write("Loading libraries, packages, and data...")
+    # Import necessary libraries and packages
+    # import cv2
+    import pytesseract
+    # import re
+    # Pytesseract
+    pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
+    # File path for video
+    # Video from https://www.youtube.com/watch?v=WkZGL7RQBVw&ab_channel=AviationWeek
+    # video = "/Users/jenniferdoan/Desktop/Shortened.mp4"
+if st.button("Auto Import Data"):
+    run_code()
 
 
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
