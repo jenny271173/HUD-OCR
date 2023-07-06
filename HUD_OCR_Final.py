@@ -157,9 +157,7 @@ st.header('Implementation')
 def run_code():
     st.write("Loading libraries, packages, and data...")
     # Import necessary libraries and packages
-    # import cv2
     import pytesseract
-    # import re
     # Pytesseract
     # pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
     # File path for video
@@ -249,8 +247,8 @@ def run_code1():
             for item in sublist:
                 st.write(item)
                 
-        print(result)
-        print(result_2)
+        # print(result)
+        # print(result_2)
             
     
 if st.button("Run OCR"):
