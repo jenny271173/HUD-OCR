@@ -78,6 +78,72 @@ def preprocess_frame(frame):
 '''
 st.code(preprocessing, language='python')
 
+ocr_model = '''
+# Run OCR on the video frames for the specified ROI
+# inspired by https://pyimagesearch.com/2018/08/20/opencv-text-detection-east-text-detector/
+# Note to define ROI's: 
+# x = move left/right, y = move up/down
+# w = width box, h = height box
+def run_OCR(filename, ROI, num_frames):
+    cap = cv2.VideoCapture(filename)
+    numbers_array = []
+    frame_count = 0
+    exit = False 
+    
+    while cap.isOpened() and not exit:
+        ret, frame = cap.read()
+        if ret:
+            frame_count += 1
+            
+            if frame_count % num_frames == 0:
+                for ROI_name, (x, y, w, h) in ROI.items():
+                    roi = frame[y:y+h, x:x+w]
+                    cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                    preprocessed = preprocess_frame(roi)
+                    text = pytesseract.image_to_string(preprocessed, config='')
+                    numbers = re.findall(r'\d+', text)
+                    
+                    if text:
+                        print(text)
+                
+                    # Append the numbers to the array
+                    if numbers:
+                        numbers_array.append(numbers)
+                    
+                    # Display the numbers on the frame
+                    cv2.putText(frame, ','.join(numbers), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                
+                cv2.imshow('Frame', frame)
+            
+            if cv2.waitKey(1) == ord('q'):
+                exit = True 
+                
+        else:
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+    
+    return numbers_array
+'''
+st.code(ocr_model, language='python')
+
+rois = '''
+if __name__ == "__main__":
+    ROI = {
+        'ROI 1': (525, 540, 95, 35)
+    }
+    result = run_OCR(video, ROI, num_frames=10)
+    
+    ROI_2 = {
+        'ROI 2': (630, 540, 95, 35)
+    }
+    result_2 = run_OCR(video, ROI_2, num_frames=10)
+    
+print(result)
+print(result_2)
+'''
+
 
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
 st.markdown(references, unsafe_allow_html=True)
