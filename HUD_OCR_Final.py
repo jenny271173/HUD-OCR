@@ -218,9 +218,9 @@ def run_code1():
                             st.write(text)
                 
                 if cv2.waitKey(1) == ord('q'):
-                    # exit = True 
+                    exit = True 
                 
-            else:
+             else:
                 break
 
         cap.release()
