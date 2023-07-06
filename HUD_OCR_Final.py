@@ -40,6 +40,9 @@ def run_OCR(filename, ROI, num_frames):
                     text = pytesseract.image_to_string(preprocessed, config='')
                     numbers = re.findall(r'\d+', text)
 
+                    if text:
+                        st.write(text)
+
                     # Append the numbers to the array
                     if numbers:
                         numbers_array.append(numbers)
@@ -77,10 +80,10 @@ def main():
 
     # Display the video
     F16_HUD = "https://github.com/jenny271173/HUD-OCR/raw/main/F16_HUD.mp4"
-    st.video(F16_HUD)
+    stvideo(F16_HUD)
 
     st.header('HUD Video Shortened')
-    st.markdown('The shortened 30 second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
+    st.markdown('The shortened 30-second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
 
     # Display the video
     shortened = "https://github.com/jenny271173/HUD-OCR/raw/main/Shortened1.mp4"
@@ -161,6 +164,7 @@ def main():
         cv2.destroyAllWindows()
 
         return numbers_array
+    '''
     st.code(ocr_model, language='python')
 
     rois = '''
@@ -181,7 +185,8 @@ def main():
     st.code(rois, language='python')
 
     st.header('Instructions to Operate HUD OCR Model')
-    st.markdown('1. Review the data source provided on this page. The videos are representative of the input data. The user is able to perform data exploration, visualization, and understand some of the cleaning measures that were taken.')
+    st.markdown(
+        '1. Review the data source provided on this page. The videos are representative of the input data. The user is able to perform data exploration, visualization, and understand some of the cleaning measures that were taken.')
     st.markdown('2. Review the source code for the OCR model. The preprocessing methods for the video are shown, as well the definitions of each function required to initialize and run the model.')
     st.markdown('3. Simply run the code by clicking the **Run OCR** button below. This will execute the OCR model on the video frames and display the processed frames along with the detected numbers.')
     st.markdown('4. View the output in the "Numbers Array" section below the code.')
@@ -208,4 +213,3 @@ def main():
 # Run the main function
 if __name__ == '__main__':
     main()
-
