@@ -211,12 +211,9 @@ def run_code1():
                         if numbers:
                             numbers_array.append(numbers)
                     
-                         # Display the numbers on the frame
-                        cv2.putText(frame, ','.join(numbers), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-                
-                    # Jupyter - cv2.imshow('Frame', frame)
                     # Show frame on streamlit
-                    st.image(frame, channels="BGR")
+                    frame_color = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    st.image(frame_color, channels="RGB")
                     
                 if cv2.waitKey(1) == ord('q'):
                     exit = True 
