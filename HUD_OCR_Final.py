@@ -214,7 +214,8 @@ def run_code1():
                 
                     # Jupyter - cv2.imshow('Frame', frame)
                     # Show frame on streamlit
-                    st.image(frame, channels="BGR")
+                    frame_color = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    st.image(frame, channels="RGB")
                     
                 if cv2.waitKey(1) == ord('q'):
                     exit = True 
