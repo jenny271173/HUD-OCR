@@ -205,16 +205,19 @@ def run_code1():
                         numbers = re.findall(r'\d+', text)
                     
                         if text:
-                            print(text)
+                            st.write(text)
                 
                         # Append the numbers to the array
                         if numbers:
                             numbers_array.append(numbers)
+                        # Show numbers on frame
+                        st.write(','.join(numbers))
                     
                     # Show frame on streamlit
                     frame_color = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     st.image(frame_color, channels="RGB")
                     
+                # Not necessary for streamlit
                 # if cv2.waitKey(1) == ord('q'):
                     # exit = True 
                 
@@ -244,9 +247,6 @@ def run_code1():
         for sublist in result_2:
             for item in sublist:
                 st.write(item)
-                
-        print(result)
-        print(result_2)
             
     
 if st.button("Run OCR"):
