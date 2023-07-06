@@ -1,6 +1,9 @@
 # Import streamlit
 import streamlit as st
 
+import pytesseract
+print(pytesseract.pytesseract.tesseract_cmd)
+
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
 
