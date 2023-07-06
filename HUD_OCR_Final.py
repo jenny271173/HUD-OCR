@@ -205,17 +205,17 @@ def run_code1():
                         preprocessed = preprocess_frame(roi)
                         text = pytesseract.image_to_string(preprocessed, config='')
                         numbers = re.findall(r'\d+', text)
-                    
-                        if text:
-                            st.write(text)
                 
                         # Append the numbers to the array
                         if numbers:
                             numbers_array.append(numbers)
-                    
+                
                     # Show frame on streamlit
                     frame_color = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     st.image(frame_color, channels="RGB")
+
+                    if text:
+                            st.write(text)
                     
                 # Not necessary for streamlit
                 # if cv2.waitKey(1) == ord('q'):
