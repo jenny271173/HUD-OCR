@@ -80,7 +80,7 @@ def main():
 
     # Display the video
     F16_HUD = "https://github.com/jenny271173/HUD-OCR/raw/main/F16_HUD.mp4"
-    stvideo(F16_HUD)
+    st.video(F16_HUD)
 
     st.header('HUD Video Shortened')
     st.markdown('The shortened 30-second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
