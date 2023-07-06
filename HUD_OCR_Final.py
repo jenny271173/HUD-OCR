@@ -205,6 +205,11 @@ def run_code1():
                         preprocessed = preprocess_frame(roi)
                         text = pytesseract.image_to_string(preprocessed, config='')
                         numbers = re.findall(r'\d+', text)
+
+                        st.write("ROI:", ROI_name)
+                        st.write("Text:", text)
+                        st.write("Numbers:", numbers)
+                        st.image(frame, channels="BGR", caption="Frame")
                 
                         # Append the numbers to the array
                         if numbers:
@@ -237,6 +242,10 @@ def run_code1():
             'ROI 2': (630, 540, 95, 35)
             }
         result_2 = run_OCR(video, ROI_2, num_frames=10)
+
+        # Print the results
+        st.write("OCR Action Completed")
+        st.write("Numbers Array:", numbers_array)
         
         st.write("Result:")
         for sublist in result:
