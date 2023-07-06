@@ -168,6 +168,66 @@ def run_code():
 if st.button("Auto Import Data"):
     run_code()
 
+def run_code1():
+    st.write("OCR Action in Progress...")
+    # Preprocess the frame
+    import cv2 
+    import pytesseract
+    import re
+    video = "/Users/jenniferdoan/Desktop/Shortened.mp4"
+    def preprocess_frame(frame):
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        blur = cv2.GaussianBlur(gray, (5, 5), 0)
+        equalized = cv2.equalizeHist(blur)
+        thresh = cv2.threshold(equalized, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=1)
+        closing = cv2.morphologyEx(opening, cv2.MORPH_CLOSE, kernel, iterations=2)
+        return closing
+    
+    def run_OCR(filename, ROI, num_frames):
+        cap = cv2.VideoCapture(filename)
+        numbers_array = []
+        frame_count = 0
+        exit = False 
+    
+        while cap.isOpened() and not exit:
+            ret, frame = cap.read()
+            if ret:
+                frame_count += 1
+            
+                if frame_count % num_frames == 0:
+                    for ROI_name, (x, y, w, h) in ROI.items():
+                        roi = frame[y:y+h, x:x+w]
+                        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                        preprocessed = preprocess_frame(roi)
+                        text = pytesseract.image_to_string(preprocessed, config='')
+                        numbers = re.findall(r'\d+', text)
+                    
+                        if text:
+                            print(text)
+                
+                        # Append the numbers to the array
+                        if numbers:
+                            numbers_array.append(numbers)
+                    
+                         # Display the numbers on the frame
+                        cv2.putText(frame, ','.join(numbers), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                
+                    # Jupyter - cv2.imshow('Frame', frame)
+                    # Show frame on streamlit
+                    st.image(frame, channels="BGR")
+                    
+                if cv2.waitKey(1) == ord('q'):
+                    exit = True 
+                
+            else:
+                break
+
+        cap.release()
+        cv2.destroyAllWindows()
+    
+        return numbers_array
 
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
 st.markdown(references, unsafe_allow_html=True)
