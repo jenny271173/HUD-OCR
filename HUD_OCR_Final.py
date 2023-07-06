@@ -1,9 +1,6 @@
 # Import streamlit
 import streamlit as st
 
-import pytesseract
-st.write(pytesseract.pytesseract.tesseract_cmd)
-
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
 
@@ -164,7 +161,7 @@ def run_code():
     import pytesseract
     # import re
     # Pytesseract
-    pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
+    # pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
     # File path for video
     # Video from https://www.youtube.com/watch?v=WkZGL7RQBVw&ab_channel=AviationWeek
     # video = "/Users/jenniferdoan/Desktop/Shortened.mp4"
