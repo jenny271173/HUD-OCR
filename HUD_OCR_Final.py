@@ -1,5 +1,21 @@
 # Import streamlit
 import streamlit as st
+import cv2
+import pytesseract
+
+# Check if cv2 is installed
+try:
+    st.write(cv2.__version__)
+    st.write("cv2 is installed")
+except ImportError:
+    st.write("cv2 is not installed")
+
+# Check if pytesseract is installed
+try:
+    st.write(pytesseract.get_tesseract_version())
+    st.write("pytesseract is installed")
+except ImportError:
+    st.write("pytesseract is not installed")
     
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
