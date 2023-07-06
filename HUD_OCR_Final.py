@@ -18,5 +18,25 @@ st.markdown('In other instances, there have been artificial intelligence (AI) re
 st.header('HUD Video Example')
 st.markdown('This is the HUD video taken directly from YouTube and downloaded as an .mp4 file. It can be found here: https://www.youtube.com/watch?v=aSzXqlnT7nQ&ab_channel=NASAArmstrongFlightResearchCenter')
 
+def main():
+    F16_HUD = "https://github.com/jenny271173/HUD-OCR/raw/main/F16_HUD.mp4"
+    
+    # Display the video
+    st.video(F16_HUD)
+
+if __name__ == "__main__":
+    main()
+    
+st.header('HUD Video Shortened')
+st.markdown('The shortened 30 second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
+def main1():
+    shortened = "https://github.com/jenny271173/HUD-OCR/raw/main/Shortened1.mp4"  
+    
+    # Display the video
+    st.video(shortened)
+
+if __name__ == "__main__":
+    main1()
+
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
 st.markdown(references, unsafe_allow_html=True)
