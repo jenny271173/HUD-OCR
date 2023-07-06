@@ -216,9 +216,8 @@ def run_code1():
 
                     if text:
                             st.write(text)
-                    
-                # Not necessary for streamlit
-                # if cv2.waitKey(1) == ord('q'):
+                
+                if cv2.waitKey(1) == ord('q'):
                     # exit = True 
                 
             else:
