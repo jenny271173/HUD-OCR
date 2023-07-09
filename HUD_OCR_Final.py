@@ -1,5 +1,6 @@
 # Import streamlit
 import streamlit as st
+st._frontend.clear_cache()
 
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
