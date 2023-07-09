@@ -5,3 +5,4 @@ libice6
 libgtk2.0-dev
 pkg-config
 libgl1-mesa-glx
+libblas3 liblapack3 liblapack-dev libblas-dev
