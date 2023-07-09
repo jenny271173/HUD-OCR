@@ -50,7 +50,6 @@ import cv2
 import pytesseract
 import re
 import pandas as pd
-import numpy as np
 '''
 st.code(initial_imports, language='python')
 
