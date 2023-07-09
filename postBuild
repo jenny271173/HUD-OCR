@@ -1,0 +1,2 @@
+#!/bin/bash
+streamlit run HUD_OCR_Final.py
