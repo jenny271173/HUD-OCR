@@ -1,8 +1,13 @@
 # Import streamlit
 import streamlit as st
+from flask import Flask
+from flask_cors import CORS
 
 # Local URL: http://localhost:8501
 # Network URL: http://192.168.0.17:8501
+
+app = Flask(__name__)
+CORS(app)
 
 st.title("Head Up Display (HUD) Optical Character Recognition (OCR) Model")
 st.markdown('Jennifer Doan')
@@ -248,6 +253,11 @@ def run_code1():
     
 if st.button("Run OCR"):
     run_code1()
+
+# Run the Streamlit app
+if __name__ == '__main__':
+    main()
+    app.run(port=8501)
     
 st.header('References')
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
