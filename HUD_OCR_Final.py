@@ -49,7 +49,6 @@ import streamlit as st
 import cv2
 import pytesseract
 import re
-import pandas as pd
 '''
 st.code(initial_imports, language='python')
 
