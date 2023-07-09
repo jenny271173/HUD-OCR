@@ -3,4 +3,3 @@ pytesseract==0.3.8
 streamlit==0.87.0
 click>=7.0,<8.0.0
 numpy==1.21.0
-protobuf==3.19.0
