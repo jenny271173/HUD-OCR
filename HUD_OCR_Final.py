@@ -6,6 +6,8 @@ import streamlit as st
 
 st.title("Head Up Display (HUD) Optical Character Recognition (OCR) Model")
 st.markdown('Jennifer Doan')
+st.image('https://github.com/jenny271173/HUD-OCR/raw/main/f16_display_image.jpeg', caption='U.S. Air Force F-16 Fighter Jet')
+st.markdown('Image extracted from: https://goallclear.com/how-planned-upgrades-will-keep-the-f-16-flying-into-the-future/')
 st.markdown('**Bottom line up front**: Scroll down to the bottom of this page to implement the HUD OCR now!')
 
 st.header('Introduction')
@@ -17,9 +19,8 @@ st.markdown('In other instances, there have been artificial intelligence (AI) re
 
 st.header('HUD Video Example')
 st.markdown('This is the HUD video taken directly from YouTube and downloaded as an .mp4 file. It can be found here: https://www.youtube.com/watch?v=aSzXqlnT7nQ&ab_channel=NASAArmstrongFlightResearchCenter')
-
 def main():
-    F16_HUD = "https://github.com/jenny271173/HUD-OCR/raw/main/F16_HUD.mp4"
+    F16_HUD = "/Users/jenniferdoan/Desktop/F16_HUD.mp4"  
     
     # Display the video
     st.video(F16_HUD)
@@ -30,7 +31,7 @@ if __name__ == "__main__":
 st.header('HUD Video Shortened')
 st.markdown('The shortened 30 second version of the HUD is shown below. Notice how the beginning and end title pages have been cut out, and the focus has been set on a consistent chunk of video.')
 def main1():
-    shortened = "https://github.com/jenny271173/HUD-OCR/raw/main/Shortened1.mp4"  
+    shortened = "/Users/jenniferdoan/Desktop/Shortened.mp4"  
     
     # Display the video
     st.video(shortened)
@@ -49,6 +50,8 @@ import streamlit as st
 import cv2
 import pytesseract
 import re
+import pandas as pd
+import numpy as np
 '''
 st.code(initial_imports, language='python')
 
@@ -159,13 +162,13 @@ def run_code():
     import pytesseract
     # import re
     # Pytesseract
-    pytesseract.pytesseract.tesseract_cmd = 'https://drive.google.com/file/d/18QUqHKAlHyOwohoLwxxqViJg5bIkpM3d/view?usp=sharing'
+    pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
     # File path for video
     # Video from https://www.youtube.com/watch?v=WkZGL7RQBVw&ab_channel=AviationWeek
     # video = "/Users/jenniferdoan/Desktop/Shortened.mp4"
 if st.button("Auto Import Data"):
     run_code()
-
+        
 def run_code1():
     st.write("OCR Action in Progress...")
     # Preprocess the frame
@@ -201,20 +204,24 @@ def run_code1():
                         preprocessed = preprocess_frame(roi)
                         text = pytesseract.image_to_string(preprocessed, config='')
                         numbers = re.findall(r'\d+', text)
+                    
+                        if text:
+                            print(text)
                 
                         # Append the numbers to the array
                         if numbers:
                             numbers_array.append(numbers)
-
-                        if text:
-                            st.write(text)
-
-                    # Show frame on streamlit
-                    st.image(frame, channels="BGR", caption="Frame")
+                    
+                         # Display the numbers on the frame
+                        cv2.putText(frame, ','.join(numbers), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                 
+                    # Jupyter - cv2.imshow('Frame', frame)
+                    # Show frame on streamlit
+                    st.image(frame, channels="BGR")
+                    
                 if cv2.waitKey(1) == ord('q'):
                     exit = True 
-            
+                
             else:
                 break
 
@@ -233,9 +240,6 @@ def run_code1():
             'ROI 2': (630, 540, 95, 35)
             }
         result_2 = run_OCR(video, ROI_2, num_frames=10)
-
-        # Print the results
-        st.write("OCR Action Completed")
         
         st.write("Result:")
         for sublist in result:
@@ -245,9 +249,57 @@ def run_code1():
         for sublist in result_2:
             for item in sublist:
                 st.write(item)
+                
+        print(result)
+        print(result_2)
+            
     
 if st.button("Run OCR"):
     run_code1()
+    
+st.header('Understanding the Results')
+st.markdown('Click the button below to review the post-model analytics.')
+if st.button("View the output"):
+    st.markdown('For those that were unable to entirely run the model, the abbreviated version of the output appears in the following manner:')
+    image1_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_1.png"
+    st.image(image1_url, use_column_width=True)
+    image2_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_2.png"
+    st.image(image2_url, use_column_width = True)
+    image3_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_3.png"
+    st.image(image3_url, use_column_width = True)
+    image4_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_4.png"
+    st.image(image4_url, use_column_width = True)
+    image5_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_5.png"
+    st.image(image5_url, use_column_width = True)
+    image6_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_6.png"
+    st.image(image6_url, use_column_width = True)
+    image7_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_7.png"
+    st.image(image7_url, use_column_width = True)
+    image8_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_8.png"
+    st.image(image8_url, use_column_width = True)
+    image9_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_9.png"
+    st.image(image9_url, use_column_width = True)
+    image10_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_10.png"
+    st.image(image10_url, use_column_width = True)
+    image11_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_11.png"
+    st.image(image11_url, use_column_width = True)
+    image12_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_12.png"
+    st.image(image12_url, use_column_width = True)
+    image13_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_13.png"
+    st.image(image13_url, use_column_width = True)
+    image14_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_14.png"
+    st.image(image14_url)
+    st.markdown('In the terminal:')
+    image15_url = "https://github.com/jenny271173/HUD-OCR/raw/main/output_image_15.png"
+    st.image(image15_url, use_column_width = True)
+      
+st.markdown('Click the button below to understand the results.')
+if st.button("View the analytics and conclusions"):
+    st.markdown("The two regions of interest both have items in them that are very clear to the human eye. They are 293.80 to indicate the frequency that the jet is monitoring, and JACBUL, which is the steerpoint that the jet is navigating to.")
+    st.markdown("The outputs of the detections appear to be **293.80** and **295.80** for ROI 1 and anything from **JAC BUL, JAC BU, JAC BL., JAC BLL, JAC BA., JAC BL., JAC BLL., JAC BULL.,** and **CEL** for ROI 2.")
+    st.markdown("The detections that received an N/A answer were ommitted because they were not useful to the analysis. The majority of the results in preliminary iterations of this model were N/A. This is due to the fact that Tesseract OCR, the model used to initialize the current OCR model, had much difficulty recognizing and performing. From the results received, very few actually hit the mark with the correct answers.")
+    st.markdown("Tesseract OCR operated after many preprocessing efforts to improve video quality, and consequently, the results of the OCR. However, it appears that this HUD recording pushed the limits of Tesseract OCR's performance. Therefore, it may be helpful for future developers to train Tesseract OCR on teh text and numbers that appear on already existing HUD recordings.")
+
 
 st.header('References')
 references = "Atherton, K. (2022, May 6). Understanding the errors introduced by military AI applications. Brookings. https://www.brookings.edu/techstream/understanding-the-errors-introduced-by-military-ai-applications/ <br>[DontGetShot]. (2023, February 12). Michigan UFO Declassified F-16 HUD Footage [Video]. YouTube. https://www.youtube.com/watch?v=GZt-lordqBE&ab_channel=DontGetShot <br>Hamad, K. A., & Kaya, M. (2016). A detailed analysis of optical character recognition technology. International Journal of Applied Mathematics, Electronics and Computers, 244-249. https://doi.org/10.18100/ijamec.270374 <br>Wilson, N., Guragain, B., Verma, A., Archer, L., & Tavakolian, K. (2019). Blending human and machine: Feasibility of measuring fatigue through the aviation headset. Human Factors: The Journal of the Human Factors and Ergonomics Society, 62(4). https://doi.org/10.1177/0018720819849783"
