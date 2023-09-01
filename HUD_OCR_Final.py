@@ -162,7 +162,8 @@ def run_code():
     import pytesseract
     # import re
     # Pytesseract
-    pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
+    #pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
+    pytesseract.pytesseract.tesseract_cmd = "https://drive.google.com/file/d/18QUqHKAlHyOwohoLwxxqViJg5bIkpM3d/view?usp=sharing"
     # File path for video
     # Video from https://www.youtube.com/watch?v=WkZGL7RQBVw&ab_channel=AviationWeek
     # video = "/Users/jenniferdoan/Desktop/Shortened.mp4"
